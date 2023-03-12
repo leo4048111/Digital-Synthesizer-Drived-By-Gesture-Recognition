@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Virtual Synthesizer Gesture Recognization</title>
+  <link rel="stylesheet" href="/static/css/piano.css">
+
+</head>
+
+<body>
+  <!-- partial:index.partial.html -->
+  <div class="main">
+    <div id="echart">
+    </div>
+    <div class="keyboard">
+      <div class="keyboard__front face-keyboard">
+        <div class="keyboard__f-top">
+          <div class="keyboard__speaker"></div>
+          <div class="keyboard__buttons">
+            <div class="keyboard__button"></div>
+            <div class="keyboard__button"></div>
+            <div class="keyboard__button"></div>
+            <div class="keyboard__button"></div>
+            <div class="keyboard__button"></div>
+            <div class="keyboard__button"></div>
+          </div>
+          <div class="keyboard__led">
+            <div class="keyboard__line">
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+            </div>
+            <div class="keyboard__line">
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+            </div>
+            <div class="keyboard__line">
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+            </div>
+            <div class="keyboard__line">
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+            </div>
+            <div class="keyboard__line">
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+            </div>
+            <div class="keyboard__line">
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+            </div>
+            <div class="keyboard__line">
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+            </div>
+            <div class="keyboard__line">
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+            </div>
+            <div class="keyboard__line">
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+            </div>
+            <div class="keyboard__line">
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+              <div class="keyboard__dot"></div>
+            </div>
+          </div>
+          <div class="keyboard__buttons">
+            <div class="keyboard__button"></div>
+            <div class="keyboard__button"></div>
+            <div class="keyboard__button"></div>
+            <div class="keyboard__button"></div>
+            <div class="keyboard__button"></div>
+            <div class="keyboard__button"></div>
+          </div>
+          <div class="keyboard__speaker"></div>
+        </div>
+        <div class="keyboard__f-bottom">
+          <div class="key" :class="{'clicked': isClicked[1]}">
+            <div class="key__front face-key key__front-1" :class="{'clicked': isClicked[1]}"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key" :class="{'clicked': isClicked[2]}">
+            <div class="key__front face-key key__front-2" :class="{'clicked': isClicked[2]}"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key" :class="{'clicked': isClicked[3]}">
+            <div class="key__front face-key key__front-3" :class="{'clicked': isClicked[3]}"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key" :class="{'clicked': isClicked[4]}">
+            <div class="key__front face-key key__front-4" :class="{'clicked': isClicked[4]}"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key" :class="{'clicked': isClicked[5]}">
+            <div class="key__front face-key key__front-5" :class="{'clicked': isClicked[5]}"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key" :class="{'clicked': isClicked[6]}">
+            <div class="key__front face-key key__front-6" :class="{'clicked': isClicked[6]}"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key" :class="{'clicked': isClicked[7]}">
+            <div class="key__front face-key key__front-7" :class="{'clicked': isClicked[7]}"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key" :class="{'clicked': isClicked[8]}">
+            <div class="key__front face-key key__front-8" :class="{'clicked': isClicked[8]}"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key" :class="{'clicked': isClicked[9]}">
+            <div class="key__front face-key key__front-9" :class="{'clicked': isClicked[9]}"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key" :class="{'clicked': isClicked[10]}">
+            <div class="key__front face-key key__front-10" :class="{'clicked': isClicked[10]}"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key" :class="{'clicked': isClicked[11]}">
+            <div class="key__front face-key key__front-11" :class="{'clicked': isClicked[11]}"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key" :class="{'clicked': isClicked[12]}">
+            <div class="key__front face-key key__front-12" :class="{'clicked': isClicked[12]}"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key" :class="{'clicked': isClicked[13]}">
+            <div class="key__front face-key key__front-13" :class="{'clicked': isClicked[13]}"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key" :class="{'clicked': isClicked[14]}">
+            <div class="key__front face-key key__front-14" :class="{'clicked': isClicked[14]}"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key" :class="{'clicked': isClicked[15]}">
+            <div class="key__front face-key key__front-15" :class="{'clicked': isClicked[15]}"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key" :class="{'clicked': isClicked[16]}">
+            <div class="key__front face-key key__front-16" :class="{'clicked': isClicked[16]}"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key" :class="{'clicked': isClicked[17]}">
+            <div class="key__front face-key key__front-17" :class="{'clicked': isClicked[17]}"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key" :class="{'clicked': isClicked[18]}">
+            <div class="key__front face-key key__front-18" :class="{'clicked': isClicked[18]}"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key" :class="{'clicked': isClicked[19]}">
+            <div class="key__front face-key key__front-19" :class="{'clicked': isClicked[19]}"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key" :class="{'clicked': isClicked[20]}">
+            <div class="key__front face-key key__front-20" :class="{'clicked': isClicked[20]}"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key" :class="{'clicked': isClicked[21]}">
+            <div class="key__front face-key key__front-21" :class="{'clicked': isClicked[21]}"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key key--black key--black-1">
+            <div class="key__front face-key"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key key--black key--black-2">
+            <div class="key__front face-key"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key key--black key--black-3">
+            <div class="key__front face-key"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key key--black key--black-4">
+            <div class="key__front face-key"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key key--black key--black-5">
+            <div class="key__front face-key"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key key--black key--black-6">
+            <div class="key__front face-key"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key key--black key--black-7">
+            <div class="key__front face-key"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key key--black key--black-8">
+            <div class="key__front face-key"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key key--black key--black-9">
+            <div class="key__front face-key"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key key--black key--black-10">
+            <div class="key__front face-key"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key key--black key--black-11">
+            <div class="key__front face-key"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key key--black key--black-12">
+            <div class="key__front face-key"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key key--black key--black-13">
+            <div class="key__front face-key"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+          <div class="key key--black key--black-14">
+            <div class="key__front face-key"></div>
+            <div class="key__back face-key"></div>
+            <div class="key__right face-key"></div>
+            <div class="key__left face-key"></div>
+            <div class="key__top face-key"></div>
+            <div class="key__bottom face-key"></div>
+          </div>
+        </div>
+      </div>
+      <div class="keyboard__back face-keyboard"></div>
+      <div class="keyboard__right face-keyboard"></div>
+      <div class="keyboard__left face-keyboard"></div>
+      <div class="keyboard__top face-keyboard"></div>
+      <div class="keyboard__bottom face-keyboard"></div>
+    </div>
+  </div>
+  <!-- partial -->
+  <script src="/static/js/vue.global.js"></script>
+  <script src="/static/js/echarts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <script src="/static/js/teachablemachine-image.min.js"></script>
+  <script type='module' src="/static/js/piano.js"></script>
+
+</body>
+
+</html>
